@@ -1,7 +1,16 @@
 import numpy as np
+import time
 from config import MOODS
 
-def get_frame_mood(frame, sr):
+def get_animated_kaomoji(mood, frame_index=None):
+    kaos = MOODS.get(mood, MOODS["unknown"])
+    if frame_index is not None:
+        return kaos[frame_index % len(kaos)]
+    else:
+        idx = int(time.time() * 2) % len(kaos)
+        return kaos[idx]
+
+def get_frame_mood(frame, sr, frame_index=None):
     fft = np.fft.fft(frame)
     fft = np.abs(fft[:len(fft)//2])
     freqs = np.fft.fftfreq(len(frame), 1/sr)[:len(fft)]
@@ -42,5 +51,5 @@ def get_frame_mood(frame, sr):
         "highs": round(float(highs), 3),
         "energy": round(float(energy), 3),
         "mood": mood,
-        "kaomoji": MOODS.get(mood, MOODS["unknown"])
+        "kaomoji": get_animated_kaomoji(mood, frame_index)
     }

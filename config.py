@@ -1,25 +1,29 @@
 import os
 
-# Automatically get the directory where the current script lives
+# Base directory where this script is located
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
-# Build a path relative to that directory
-AUDIO_PATH = os.path.join(BASE_DIR, "audio", "crush.mp3")
+# Timing and visuals
+FRAME_DURATION = .1  # seconds per analysis frame
 
-FRAME_DURATION = 0.1  # seconds per analysis frame
-BAR_WIDTH = 30
+# Song list
+SONG_LIST = [
+    ("Instant Crush", os.path.join(BASE_DIR, "audio", "Instant_Crush.mp3")),
+    ("Clair Obscure: Lumiere", os.path.join(BASE_DIR, "audio", "Clair_Obscure.mp3"))
+]
 
+# Mood → animated kaomojis
 MOODS = {
-    "punchy": "( •̀ ω •́ )✧",
-    "dreamy": "(｡•́‿•̀｡)",
-    "idle": "(-_-)zzz",
-    "chaotic": "(╯°□°）╯︵ ┻━┻",
-    "sharp": "(≖ᴗ≖✿)",
-    "bouncy": "(づ｡◕‿‿◕｡)づ",
-    "nostalgic": "(´• ω •`)",
-    "balanced": "(･ω･)b",
-    "bright": "(☆▽☆)",
-    "dull": "(._.)",
-    "focused": "(ง •̀_•́)ง",
-    "unknown": "(◎_◎;)"
+    "punchy": ["( •̀ ω •́ )✧", "(ง •̀_•́)ง", "( •̀д•́)"],
+    "dreamy": ["(｡•́‿•̀｡)", "(｡♥‿♥｡)", "(ᵕ≀ ̠ᵕ )"],
+    "idle": ["(-_-)zzz", "(－_－) zzZ", "(￣o￣) . z Z"],
+    "chaotic": ["(╯°□°）╯︵ ┻━┻", "┻━┻ ︵ヽ(`Д´)ﾉ︵﻿ ┻━┻", "ლ(ಠ益ಠლ)"],
+    "sharp": ["(≖ᴗ≖✿)", "(¬‿¬)", "( ͡° ͜ʖ ͡°)"],
+    "bouncy": ["(づ｡◕‿‿◕｡)づ", "ʕ•ᴥ•ʔ", "٩(｡•́‿•̀｡)۶"],
+    "nostalgic": ["(´• ω •`)", "(ಥ﹏ಥ)", "(∩˃o˂∩)♡"],
+    "balanced": ["(･ω･)b", "(￣ω￣)", "ヽ(´ー｀)ノ"],
+    "bright": ["(☆▽☆)", "(★ω★)", "(≧◡≦)"],
+    "dull": ["(._.)", "(¬_¬)", "( •︵• )"],
+    "focused": ["(ง •̀_•́)ง", "(⇀‸↼‶)", "(•̀o•́)ง"],
+    "unknown": ["(◎_◎;)", "(・_・ヾ", "(°ロ°) !?"]
 }
